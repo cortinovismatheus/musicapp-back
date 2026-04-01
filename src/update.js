@@ -1,9 +1,9 @@
 import fs from "fs";
-import { read } from "./read.js";
+import { readDb } from "./readdb.js";
 
-function update(id, data) {  
+async function update(id, data) {  
   const idString = String(id);
-  const dados = read(); 
+  const dados = await readDb(); 
 
   const idExistente = dados.some((item) => item.id === idString);
   if(!idExistente){

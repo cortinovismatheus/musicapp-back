@@ -1,9 +1,9 @@
 import fs from "fs";
-import { read } from "./read.js";
+import { readDb } from "./readdb.js";
 
-function remove(id){
+async function remove(id){
   const idToDelete = String(id);
-  const dados = read();
+  const dados = await readDb();
 
   const idExistente = dados.some((item) => item.id === idToDelete);
 

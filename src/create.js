@@ -1,10 +1,8 @@
 import fs from "fs";
-import { read } from "./read.js";
+import { readDb } from "./readdb.js";
 
-function create(data) {
+async function create(data) {
   console.log(data);
-
-  
 
   if(data.name === undefined){
     throw new Error("Name é obrigatório. Por favor, forneça um nome para o novo item.");
@@ -22,7 +20,7 @@ function create(data) {
     throw new Error("Price é obrigatório. Por favor, forneça um preço para o novo item.");
   }
 
-  const dados = read();
+  const dados = await readDb();
 
   const id = dados.length + 1;
 
@@ -34,8 +32,6 @@ function create(data) {
     price: data.price
   };
 
-  
-  
   const idExistente = dados.some((item) => item.id === novoItem.id);
 
   if (idExistente) {

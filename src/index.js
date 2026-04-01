@@ -17,17 +17,13 @@ const fun = () => {
   console.log(`Servidor rodando na porta ${PORT}`);
 }
 
-app.get("/", (req, res) => {
-  const arrReasponse = read();
+app.get("/", async(req, res) => {
+  const arrReasponse = await read();
   res.json(arrReasponse);
 })
 
 app.post("/", (req, res) => {
-  // const newItem = req.body;
-  // create(newItem);
-  // res.json({
-  //   message: "Item criado com sucesso",
-  //   item: newItem});
+  
   try{
     create(req.body);
     res.status(201).json({message: "Item criado com sucesso",});
