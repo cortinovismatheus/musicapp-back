@@ -1,5 +1,5 @@
 import fs from "fs";
-import { readDb } from "./readdb.js";
+import { readDb } from "../database/readdb.js";
 
 async function remove(id){
   const idToDelete = String(id);
@@ -20,7 +20,7 @@ async function remove(id){
   const conteudo = linhas.join("\n");
 
   
-  fs.writeFileSync("src/db.csv", conteudo); 
+  fs.writeFileSync("src/database/db.csv", conteudo); 
 }
 
 export {remove};

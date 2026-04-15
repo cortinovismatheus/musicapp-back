@@ -1,5 +1,5 @@
 import fs from "fs";
-import { readDb } from "./readdb.js";
+import { readDb } from "../database/readdb.js";
 
 async function update(id, data) {  
   const idString = String(id);
@@ -28,7 +28,7 @@ async function update(id, data) {
     return `${item.id};${item.name};${item.category};${item.quantity_piece};${item.price}`; 
   });
 
-  fs.writeFileSync("src/db.csv", conteudo.join("\n"));
+  fs.writeFileSync("src/database/db.csv", conteudo.join("\n"));
 }
 
 export { update };

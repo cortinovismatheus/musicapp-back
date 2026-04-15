@@ -2,7 +2,7 @@ import fs from "fs"
 
 async function readDb() {
     console.log("Reading file...");
-    const conteudo = fs.readFileSync("src/db.csv", "utf-8"); 
+    const conteudo = fs.readFileSync("src/database/db.csv", "utf-8"); 
     const linhas = conteudo.split("\n");
 
     const dados = []

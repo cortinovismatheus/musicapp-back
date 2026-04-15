@@ -1,7 +1,7 @@
-import { read } from "./read.js";
-import { remove } from "./remove-item.js";
-import { create } from "./create.js";
-import { update } from "./update.js";
+import { read } from "./aplications/read.js";
+import { remove } from "./aplications/remove-item.js";
+import { create } from "./aplications/create.js";
+import { update } from "./aplications/update.js";
 
 import express from "express";
 import cors from "cors";
@@ -18,12 +18,13 @@ const fun = () => {
 }
 
 app.get("/", async(req, res) => {
-  const arrReasponse = await read();
+  const name = req.query?.name || ""
+  const category = req.query?.category || ""
+  const arrReasponse = await read({name, category});
   res.json(arrReasponse);
 })
 
 app.post("/", (req, res) => {
-  
   try{
     create(req.body);
     res.status(201).json({message: "Item criado com sucesso",});
