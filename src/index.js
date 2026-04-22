@@ -20,7 +20,9 @@ const fun = () => {
 app.get("/", async(req, res) => {
   const name = req.query?.name || ""
   const category = req.query?.category || ""
-  const arrReasponse = await read({name, category});
+  const page = Number(req.query?.page) || 1
+  const limit = Number(req.query?.limit) || 2
+  const arrReasponse = await read({name, category, page, limit});
   res.json(arrReasponse);
 })
 
